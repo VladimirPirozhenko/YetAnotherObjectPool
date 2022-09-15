@@ -77,20 +77,6 @@ public class ObjectPool<T> : IEnumerable<T> where T : MonoBehaviour
         return instance;
     }
 
-//    (int id, Type type) key = (obj.GetInstanceID(), typeof(T));
-//    T component;
-
-//            if (_componentCache.ContainsKey(key))
-//            {
-//                component = _componentCache[key] as T;
-//                if (component == null) { _componentCache.Remove(key); }
-//                else { return component; }
-//            }
-
-//            component = obj.GetComponent<T>();
-//if (component != null) { _componentCache[key] = component; }
-//return component;
-
     public C GetComponentFromPool<C>() where C : Component
     {
         C component = null; 
@@ -203,7 +189,7 @@ public class ObjectPool<T> : IEnumerable<T> where T : MonoBehaviour
 
     public void ReturnAllElementsToPool()
     {
-        foreach (var obj in activePoolElements)
+        foreach (var obj in activePoolElements.ToList())
         {
             ReturnToPool(obj);
         }
