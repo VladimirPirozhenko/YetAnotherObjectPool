@@ -189,21 +189,15 @@ public class PoolCreatorInspector : Editor
         {
             prefabPath = defaultPrefabPath;
         }
-
-        if (!Directory.Exists(prefabPath))
-        {
-           // Directory.CreateDirectory(prefabPath);
-          //  AssetDatabase.CreateFolder("Assets/My Folder", "My Sub Folder");
-        }
             
-        string prefabFilePath = $"{prefabPath}/{poolName}.prefab";
+        string prefabFilePath = $"{prefabPath}/{$"{target.name}Pool"}.prefab";
 
         prefabFilePath = TrimFilePathBeforeSeparator(prefabFilePath, assetsString);
         //prefabFilePath = $"{Application.dataPath}/{prefabFilePath}";
 
         //prefabFilePath = AssetDatabase.GenerateUniqueAssetPath(prefabFilePath);
 
-        bool prefabSuccess = false;
+        bool prefabSuccess = false;;
         PrefabUtility.SaveAsPrefabAssetAndConnect(poolingObject, $"Assets/{prefabFilePath}", InteractionMode.UserAction, out prefabSuccess);
 
         if (prefabSuccess == true)
@@ -217,9 +211,6 @@ public class PoolCreatorInspector : Editor
     {
         if (inputFilePath.StartsWith(separator, StringComparison.OrdinalIgnoreCase) == false && inputFilePath.Contains(separator))
         {
-            //inputFilePath.Split(separator.ToCharArray());
-            //  return string.Join("", inputFilePath.Split(separator.ToCharArray()));
-
             inputFilePath =  inputFilePath.Substring(inputFilePath.LastIndexOf(separator));
             inputFilePath = inputFilePath.Replace(separator, "");
         }
