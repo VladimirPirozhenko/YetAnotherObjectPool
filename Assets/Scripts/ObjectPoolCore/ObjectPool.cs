@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using System.Threading.Tasks;
 using UnityEngine;
 
 public class ObjectPool<T> : IEnumerable<T> where T : MonoBehaviour
@@ -24,10 +25,10 @@ public class ObjectPool<T> : IEnumerable<T> where T : MonoBehaviour
         this.actionOnGet = actionOnGet;
         this.actionOnRelease = actionOnRelease;
         this.actionOnDestroy = actionOnDestroy;
-        activePoolElements = new List<T>();
-        inactivePoolElements = new Queue<T>();
-        componentCache = new Dictionary<int,Component>(); 
-
+        activePoolElements = new List<T>(initialCapacity);
+        inactivePoolElements = new Queue<T>(initialCapacity);
+        componentCache = new Dictionary<int,Component>();
+        //CreateAsync();
         for (uint i = 0; i < Capacity; i++)
         {
             var obj = actionOnCreate();
@@ -36,6 +37,16 @@ public class ObjectPool<T> : IEnumerable<T> where T : MonoBehaviour
         }
     }
 
+    public async void CreateAsync()
+    {
+        for (uint i = 0; i < Capacity; i++)
+        {
+            var obj = actionOnCreate();
+            inactivePoolElements.Enqueue(obj);
+            obj.gameObject.SetActive(false);
+            await Task.Delay(1000);
+        }
+    }
     public bool ContainsElement(T element)
     {
         return ContainsElement(element, true) || ContainsElement(element, false);
