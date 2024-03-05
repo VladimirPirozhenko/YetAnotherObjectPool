@@ -1,0 +1,16 @@
+{
+    "name": "vladimir.yetanotherobjectpool.editor",
+    "rootNamespace": "",
+    "references": [
+        "vladimir.yetanotherobjectpool.runtime"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

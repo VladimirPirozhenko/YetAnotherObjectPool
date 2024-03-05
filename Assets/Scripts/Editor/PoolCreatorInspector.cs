@@ -7,7 +7,7 @@ using System.IO;
 using static UnityEditor.EditorGUI;
 using System.Linq;
 using System.Collections.Generic;
-
+ 
 [CustomEditor(typeof(PoolingObject<>), true)]
 public class PoolCreatorInspector : Editor
 {

@@ -1,0 +1,21 @@
+{
+  "name": "com.vladimir.yetanotherobjectpool",
+  "version": "0.9.9",
+  "displayName": "Yet Another Object Pool",
+  "description": "Easy object pooling right in the editor",
+  "unity": "2022.3",
+  "unityRelease": "20f1",
+  "documentationUrl": "",
+  "changelogUrl": "",
+  "licensesUrl": "",
+  "keywords": [
+    "Pool",
+    "GameObject",
+    "Editor"
+  ],
+  "author": {
+    "name": "Vladimir Pirozhenko",
+    "email": "vvpirozhok@mail.ru",
+    "url": "https://github.com/VladimirPirozhenko"
+  }
+}

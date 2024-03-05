@@ -1,9 +1,12 @@
-﻿using System.CodeDom;
+﻿using System;
+using Microsoft.CSharp;
+using System.CodeDom;
 using System.CodeDom.Compiler;
-using System.Reflection;
-using System.IO;
-using System;
 using System.Collections.Generic;
+using System.IO;
+using System.Reflection;
+using UnityEditor;
+using UnityEditorInternal;
 
 public class PoolCodeGenerator
 {
